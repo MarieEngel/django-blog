@@ -6,7 +6,7 @@ from .models import Blog
 
 
 class BlogAdmin(admin.ModelAdmin):
-    pass
+    readonly_fields = ("date",)
 
 
 admin.site.register(Blog, BlogAdmin)
