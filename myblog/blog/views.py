@@ -24,9 +24,9 @@ def update(request):
         """
         pass the path of the directory where your project will be
         stored on PythonAnywhere in the git.Repo() as parameter.
-        Here the name of my directory is "raphaelavergud.pythonanywhere.com/"
+        Here the name of my directory is "mariee.pythonanywhere.com/"
         """
-        repo = git.Repo("~/django-blog/")
+        repo = git.Repo("django-blog/")
         origin = repo.remotes.origin
 
         origin.pull()
