@@ -26,7 +26,7 @@ def update(request):
         stored on PythonAnywhere in the git.Repo() as parameter.
         Here the name of my directory is "raphaelavergud.pythonanywhere.com/"
         """
-        repo = git.Repo("django_blog/")
+        repo = git.Repo("myblog/")
         origin = repo.remotes.origin
 
         origin.pull()
