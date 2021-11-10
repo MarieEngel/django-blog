@@ -24,6 +24,7 @@ urlpatterns = [
     path("", views.home, name="home"),
     path("blog/<int:id>/", views.blog_post, name="blog_post"),
     path("admin/", admin.site.urls),
+    path("update_server/", views.update, name="update"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # if settings.DEBUG:
