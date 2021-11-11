@@ -7,7 +7,9 @@
     {% load markdownify %}
     <h1>{{ blog.title }}</h1>
     <p>{{ blog.date }}</p>
-    <p><img src="{{ blog.header_image.url }}" alt="New Image" /></p>
+    {% if blog.header_image %}
+        <p><img src="{{ blog.header_image.url }}" alt="New Image" /></p>
+    {% endif %}
     <p>{{ blog.body|markdownify }}</p>
     <br></br>
     <a href="{%url "home"%}"class ="btn btn-secondary">Back</a>
