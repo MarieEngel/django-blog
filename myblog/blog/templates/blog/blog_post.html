@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>{{ blog.title }}</title>
-  </head>
+{% extends 'blog/base.html'  %}
+{%block content%}
 
-  <body>
+
+
     {% load markdownify %}
     <h1>{{ blog.title }}</h1>
     <p>{{ blog.date }}</p>
@@ -13,5 +10,5 @@
     <p>{{ blog.body|markdownify }}</p>
     <br></br>
     <a href="{%url "home"%}">Back</a>
-  </body>
-</html>
+
+ {%endblock%}

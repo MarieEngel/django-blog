@@ -20,7 +20,11 @@ from django.conf.urls.static import static
 
 from blog import views
 
+# from views import Homeview, BlogPostView
+
 urlpatterns = [
+    # path("",HomeView.as_view(), name="home");
+    # path("blog_post/<intid>", BlogPostView.as_view(), name='blog_post'),
     path("", views.home, name="home"),
     path("blog/<int:id>/", views.blog_post, name="blog_post"),
     path("admin/", admin.site.urls),
