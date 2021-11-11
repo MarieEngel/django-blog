@@ -11,10 +11,5 @@
     <p>{{ blog.date }}</p>
     <p><img src="{{ blog.header_image.url }}" alt="New Image" /></p>
     <p>{{ blog.body|markdownify }}</p>
-
-    {% comment %} {% if img_obj %}
-    <h3>Succesfully uploaded : {{img_obj.title}}</h3>
-    <img src="{{ img_obj.image.url}}" alt="connect" style="max-height: 300px" />
-    {% endif %} {% endcomment %}
   </body>
 </html>
