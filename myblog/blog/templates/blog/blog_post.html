@@ -11,5 +11,7 @@
     <p>{{ blog.date }}</p>
     <p><img src="{{ blog.header_image.url }}" alt="New Image" /></p>
     <p>{{ blog.body|markdownify }}</p>
+    <br></br>
+    <a href="{%url "home"%}">Back</a>
   </body>
 </html>
