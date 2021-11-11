@@ -1,6 +1,3 @@
-{% extends 'blog/base.html' %} {%block content%}
-
-<p><a href="/blog/create">Create new post</a></p>
-{% for blog in blog_posts %}
+{% extends 'blog/base.html' %} {%block content%} {% for blog in blog_posts %}
 <p><a href="/blog/{{ blog.id }}/">{{ blog.title }}</a></p>
 {% endfor %} {%endblock%}
