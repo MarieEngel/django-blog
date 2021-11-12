@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Blog(models.Model):
@@ -10,6 +11,9 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("home")
 
 
 # class Image(models.Model):

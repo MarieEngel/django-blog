@@ -1,0 +1,22 @@
+{% extends 'blog/base.html'  %}
+{%block title%}Create A New Blog Post{%endblock%}
+{%block content%}
+
+
+<h1>Add a Blog Post</h1>
+<br></br>
+<div class+"form-group">
+    <form method="POST">
+        {%csrf_token%}
+        {{form.as_p}}
+        <button class ="btn btn-secondary">Post</button>
+</div>
+    {% comment %} {% load markdownify %}
+    <h1>{{ blog.title }}</h1>
+    <p>{{ blog.date }}</p>
+    <p><img src="{{ blog.header_image.url }}" alt="New Image" /></p>
+    <p>{{ blog.body|markdownify }}</p>
+    <br></br>
+    <a href="{%url "home"%}"class ="btn btn-secondary">Back</a> {% endcomment %}
+
+ {%endblock%}
