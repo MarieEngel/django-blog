@@ -25,7 +25,7 @@ class AddPostView(CreateView):
     model = Blog
     form_class = BlogForm
     template_name = "blog/add_blogpost.html"
-    fields = "__all__"
+    # fields = "__all__"  # fields and form_class can not be specified both
 
 
 @csrf_exempt
