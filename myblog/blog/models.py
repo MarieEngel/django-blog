@@ -14,26 +14,3 @@ class Blog(models.Model):
 
     def get_absolute_url(self):
         return reverse("home")
-
-
-# class Image(models.Model):
-#     title = models.CharField(max_length=200)
-#     image = models.ImageField(upload_to="media/")
-
-#     def __str__(self):
-#         return self.title
-
-
-# class Post(models.Model):
-#     title = models.CharField(max_length=150)
-#     body = models.TextField()
-#     date = models.DateTimeField(auto_now=True)
-#     content = models.TextField(default=None, blank=True)
-
-#     def __str__(self):  # we create this function to be called
-#         return self.title
-
-
-# title
-# body
-# date

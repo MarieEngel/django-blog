@@ -24,7 +24,7 @@ from blog.views import (
     AddPostView,
     contact,
     update,
-)  # ContactView,
+)
 
 urlpatterns = [
     path("add_blogpost/", AddPostView.as_view(), name="add_blogpost"),
@@ -34,8 +34,3 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("update_server/", update, name="update"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-# if settings.DEBUG:
-#     urlpatterns += static(
-#         settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
-#     )  # sets static files and the media root
