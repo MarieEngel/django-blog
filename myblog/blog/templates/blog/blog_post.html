@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>{{ blog.title }}</title>
-  </head>
+{% extends 'blog/base.html'  %}
+{%block title%}{{ blog.title_tag }}{%endblock%}
+{%block content%}
 
-  <body>
-    {% load markdownify %}
-    <h1>{{ blog.title }}</h1>
-    <p>{{ blog.date }}</p>
+{% load markdownify %}
+<h1>{{ blog.title }}</h1>
+<p>{{ blog.date }}</p>
+{% if blog.header_image %}
     <p><img src="{{ blog.header_image.url }}" alt="New Image" /></p>
-    <p>{{ blog.body|markdownify }}</p>
-  </body>
-</html>
+{% endif %}
+<p>{{ blog.body|markdownify }}</p>
+<br/>
+<a href="{%url "home"%}"class ="btn btn-secondary">Back</a>
+
+{%endblock%}

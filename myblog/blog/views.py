@@ -1,21 +1,54 @@
+from django.views.generic.edit import DeleteView
 import git
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.core.files.storage import FileSystemStorage
 from .models import Blog
 from django.views.decorators.csrf import csrf_exempt
+from django.core.mail import send_mail, BadHeaderError
+from django.views.generic import ListView, DetailView, CreateView
+from .forms import BlogForm, ContactForm
 
 
-def home(request):
-    blog_posts = Blog.objects.all()
-    context = {"blog_posts": blog_posts}
-    return render(request, "blog/home.html", context)
+class HomeView(ListView):
+    model = Blog
+    template_name = "blog/home.html"
+    context_object_name = "blog_posts"
 
 
-def blog_post(request, id=1):
-    blog = Blog.objects.get(id=id)
-    context = {"blog": blog}
-    return render(request, "blog/blog_post.html", context)
+class BlogPostView(DetailView):
+    model = Blog
+    template_name = "blog/blog_post.html"
+
+
+class AddPostView(CreateView):
+    model = Blog
+    form_class = BlogForm
+    template_name = "blog/add_blogpost.html"
+
+
+def contact(request):
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            cleaned = form.cleaned_data
+            message = f"""
+            from: {cleaned["name"]} {cleaned["email"]}
+            {cleaned["message"]}
+            """
+            try:
+                send_mail(
+                    cleaned["subject"],
+                    message,
+                    "no-other-addresses-were-there@outlook.com",
+                    ["no-other-addresses-were-there@outlook.com"],
+                )
+            except BadHeaderError:
+                return HttpResponse("Invalid header found.")
+            return redirect("home")
+
+    form = ContactForm()
+    return render(request, "blog/contact.html", {"form": form})
 
 
 @csrf_exempt

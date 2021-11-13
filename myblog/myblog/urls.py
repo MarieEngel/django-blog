@@ -18,16 +18,19 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-from blog import views
+from blog.views import (
+    HomeView,
+    BlogPostView,
+    AddPostView,
+    contact,
+    update,
+)
 
 urlpatterns = [
-    path("", views.home, name="home"),
-    path("blog/<int:id>/", views.blog_post, name="blog_post"),
+    path("add_blogpost/", AddPostView.as_view(), name="add_blogpost"),
+    path("contact/", contact, name="contact"),
+    path("", HomeView.as_view(), name="home"),
+    path("blog/<int:pk>/", BlogPostView.as_view(), name="blog_post"),
     path("admin/", admin.site.urls),
-    path("update_server/", views.update, name="update"),
+    path("update_server/", update, name="update"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-# if settings.DEBUG:
-#     urlpatterns += static(
-#         settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
-#     )  # sets static files and the media root
