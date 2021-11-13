@@ -1,13 +1,13 @@
 from django.views.generic.edit import DeleteView
 import git
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.core.files.storage import FileSystemStorage
 from .models import Blog
 from django.views.decorators.csrf import csrf_exempt
-
+from django.core.mail import send_mail, BadHeaderError
 from django.views.generic import ListView, DetailView, CreateView
-from .forms import BlogForm
+from .forms import BlogForm, ContactForm
 
 
 class HomeView(ListView):
@@ -26,6 +26,34 @@ class AddPostView(CreateView):
     form_class = BlogForm
     template_name = "blog/add_blogpost.html"
     # fields = "__all__"  # fields and form_class can not be specified both
+
+
+# class ContactView(CreateView):
+#     model = Blog
+#     template_name = "blog/contact.html"
+
+
+def contact(request):
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            subject = "Website Inquiry"
+            body = {
+                "first_name": form.cleaned_data["first_name"],
+                "last_name": form.cleaned_data["last_name"],
+                "email": form.cleaned_data["email_address"],
+                "message": form.cleaned_data["message"],
+            }
+            message = "\n".join(body.values())
+
+            try:
+                send_mail(subject, message, "admin@example.com", ["admin@example.com"])
+            except BadHeaderError:
+                return HttpResponse("Invalid header found.")
+            return redirect("main:homepage")
+
+    form = ContactForm()
+    return render(request, "blog/contact.html", {"form": form})
 
 
 @csrf_exempt
