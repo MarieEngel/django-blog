@@ -40,8 +40,8 @@ def contact(request):
                 send_mail(
                     cleaned["subject"],
                     message,
-                    "no-other-addresses-were-there@outlook.com",
-                    ["no-other-addresses-were-there@outlook.com"],
+                    "nootheraddresseswerethere@gmail.com",
+                    ["nootheraddresseswerethere@gmail.com"],
                 )
             except BadHeaderError:
                 return HttpResponse("Invalid header found.")
