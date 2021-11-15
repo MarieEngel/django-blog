@@ -33,4 +33,6 @@ urlpatterns = [
     path("blog/<int:pk>/", BlogPostView.as_view(), name="blog_post"),
     path("admin/", admin.site.urls),
     path("update_server/", update, name="update"),
+    path("members/", include("django.contrib.auth.urls")),
+    path("members/", include("members.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
