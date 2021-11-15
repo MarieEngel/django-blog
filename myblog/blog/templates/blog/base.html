@@ -33,22 +33,33 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="{%url "add_blogpost"%}">Add Blog Post</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{%url "register"%}">Register</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{%url "login"%}">Login</a>
-              </li>
+              {%if user.is_authenticated%}
+                <li class="nav-item">
+                 <a class="nav-link" href="{%url "add_blogpost"%}">Add Blog Post</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{%url "logout"%}">Logout</a>
+                </li>
+               <li class="nav-item">
+                <a class="nav-link" href="{%url "contact"%}">Contact</a>
+               </li>
+              {%else %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{%url "register"%}">Register</a>
+                </li>
+                <li class="nav-item">
+                 <a class="nav-link" href="{%url "login"%}">Login</a>
+                </li>
+              {% endif%}
+              
+              
+              
+              
             </ul>
           </div>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="{%url "contact"%}">Contact</a>
-              </li>
+              
             </ul>
           </div>
         </div>
