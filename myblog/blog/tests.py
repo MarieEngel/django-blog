@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 from blog.forms import ContactForm
 
-# Create your tests here.
+
 class SimpleTest(TestCase):
     def setUp(self):
         self.user = User.objects.create_superuser(
