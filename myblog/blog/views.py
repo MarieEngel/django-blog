@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from .models import Blog
 from django.views.decorators.csrf import csrf_exempt
 from django.core.mail import send_mail, BadHeaderError
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from .forms import BlogForm, ContactForm
 
 
@@ -23,6 +23,12 @@ class AddPostView(CreateView):
     model = Blog
     form_class = BlogForm
     template_name = "blog/add_blogpost.html"
+
+
+class UpdatePostView(UpdateView):
+    model = Blog
+    form_class = BlogForm
+    template_name = "blog/update_blogpost.html"
 
 
 def contact(request):

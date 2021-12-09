@@ -22,12 +22,14 @@ from blog.views import (
     HomeView,
     BlogPostView,
     AddPostView,
+    UpdatePostView,
     contact,
     update,
 )
 
 urlpatterns = [
     path("add_blogpost/", AddPostView.as_view(), name="add_blogpost"),
+    path("blog/<int:pk>/update", UpdatePostView.as_view(), name="blogpost-update"),
     path("contact/", contact, name="contact"),
     path("", HomeView.as_view(), name="home"),
     path("blog/<int:pk>/", BlogPostView.as_view(), name="blog_post"),
