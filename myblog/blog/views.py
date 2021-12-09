@@ -1,8 +1,6 @@
-from django.views.generic.edit import DeleteView
 import git
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.core.files.storage import FileSystemStorage
 from .models import Blog
 from django.views.decorators.csrf import csrf_exempt
 from django.core.mail import send_mail, BadHeaderError

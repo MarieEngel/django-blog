@@ -183,6 +183,6 @@ LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home"
 
 try:
-    from local_settings import *
+    from local_settings import *  # noqa: F403, F401
 except ImportError:
     pass
