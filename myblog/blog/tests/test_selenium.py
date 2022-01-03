@@ -9,6 +9,8 @@ from selenium.webdriver.support import expected_conditions as EC  # noqa: N812
 
 
 class SeleniumTest(StaticLiveServerTestCase):
+    "In-browser testing"
+
     def setUp(self):
         options = webdriver.ChromeOptions()
         if os.getenv("CI"):
