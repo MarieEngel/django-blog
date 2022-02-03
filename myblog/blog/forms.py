@@ -10,6 +10,7 @@ class BlogForm(forms.ModelForm):
             "title": forms.TextInput(attrs={"class": "form-control"}),
             "title_tag": forms.TextInput(attrs={"class": "form-control"}),
             "body": forms.Textarea(attrs={"class": "form-control"}),
+            "header_image" : forms.FileInput(attrs={"class": "form-control"}),
         }
 
 
