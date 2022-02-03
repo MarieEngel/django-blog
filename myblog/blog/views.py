@@ -1,4 +1,5 @@
 import git
+import logging
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Blog
@@ -18,7 +19,7 @@ class BlogPostView(DetailView):
     model = Blog
     template_name = "blog/blog_post.html"
 
-
+logger = logging.getLogger("add_post_logger")
 class AddPostView(CreateView):
     model = Blog
     form_class = BlogForm
