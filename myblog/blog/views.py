@@ -39,7 +39,7 @@ def contact(request):
                 send_mail(
                     cleaned["subject"],
                     message,
-                    "nootheraddresseswerethere@gmail.com",
+                    "somemail@mail.marie.lundinfo.com",
                     ["nootheraddresseswerethere@gmail.com"],
                 )
             except BadHeaderError:
