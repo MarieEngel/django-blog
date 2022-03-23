@@ -7,7 +7,6 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core.mail import send_mail, BadHeaderError
 from django.views.generic import ListView, DetailView, CreateView
 from .forms import BlogForm, ContactForm
-from myblog.settings import EMAIL_HOST_USER
 
 
 class HomeView(ListView):
@@ -40,7 +39,7 @@ def contact(request):
                 send_mail(
                     cleaned["subject"],
                     message,
-                    EMAIL_HOST_USER,
+                    "nootheraddresseswerethere@gmail.com",
                     ["nootheraddresseswerethere@gmail.com"],
                 )
             except BadHeaderError:
