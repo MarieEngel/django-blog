@@ -41,7 +41,7 @@ def contact(request):
                     cleaned["subject"],
                     message,
                     EMAIL_HOST_USER,
-                    [EMAIL_HOST_USER],
+                    ["nootheraddresseswerethere@gmail.com"],
                 )
             except BadHeaderError:
                 return HttpResponse("Invalid header found.")
